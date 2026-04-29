@@ -38,27 +38,31 @@ const TRAINERS = [
 
 function TrainersPage() {
   return (
-    <div className="container mx-auto px-6 py-20">
-      <div className="max-w-2xl">
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Meet Our Trainers</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+    <div className="container mx-auto px-6 py-24">
+      <div className="max-w-2xl animate-fade-up">
+        <span className="inline-flex rounded-full border border-border glass px-3 py-1 text-xs font-medium text-muted-foreground">The team</span>
+        <h1 className="mt-4 text-5xl font-bold tracking-tight md:text-6xl">Meet Our <span className="text-gradient">Trainers</span></h1>
+        <p className="mt-5 text-lg text-muted-foreground">
           Practitioners first, educators always. Learn from people who've shipped what they teach.
         </p>
       </div>
 
-      <div className="mt-14 grid gap-8 md:grid-cols-3">
-        {TRAINERS.map((t) => (
+      <div className="mt-16 grid gap-8 md:grid-cols-3">
+        {TRAINERS.map((t, i) => (
           <article
             key={t.name}
-            className="rounded-2xl border border-border bg-card p-6 text-center"
-            style={{ boxShadow: "var(--shadow-card)" }}
+            className="group relative overflow-hidden rounded-2xl border border-border glass p-7 text-center glow-hover animate-fade-up"
+            style={{ animationDelay: `${i * 80}ms` }}
           >
-            <div className="mx-auto mb-5 h-32 w-32 overflow-hidden rounded-full ring-4 ring-background" style={{ boxShadow: "var(--shadow-elegant)" }}>
-              <img src={t.image} alt={`Portrait of ${t.name}`} loading="lazy" width={768} height={768} className="h-full w-full object-cover" />
+            <div aria-hidden className="absolute inset-x-0 -top-20 h-40 opacity-50 blur-3xl" style={{ background: "var(--gradient-hero)" }} />
+            <div className="relative mx-auto mb-5 h-32 w-32 rounded-full p-[2px]" style={{ background: "var(--gradient-hero)", boxShadow: "var(--shadow-glow)" }}>
+              <div className="h-full w-full overflow-hidden rounded-full ring-4 ring-background">
+                <img src={t.image} alt={`Portrait of ${t.name}`} loading="lazy" width={768} height={768} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
             </div>
-            <h2 className="text-xl font-semibold">{t.name}</h2>
-            <p className="mt-1 text-sm font-medium" style={{ color: "var(--primary)" }}>{t.specialty}</p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.bio}</p>
+            <h2 className="relative text-xl font-semibold tracking-tight">{t.name}</h2>
+            <p className="relative mt-1 text-sm font-medium text-gradient">{t.specialty}</p>
+            <p className="relative mt-4 text-sm leading-relaxed text-muted-foreground">{t.bio}</p>
           </article>
         ))}
       </div>
