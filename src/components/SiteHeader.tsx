@@ -4,10 +4,10 @@ import { GraduationCap } from "lucide-react";
 export function SiteHeader() {
   const linkBase = "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors";
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-2 font-semibold">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: "var(--gradient-hero)" }}>
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl shadow-lg" style={{ background: "var(--gradient-hero)", boxShadow: "var(--shadow-glow)" }}>
             <GraduationCap className="h-5 w-5 text-primary-foreground" />
           </span>
           <span className="text-base tracking-tight">SmartTrain</span>
